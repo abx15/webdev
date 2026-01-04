@@ -1,0 +1,27 @@
+document.getElementById('slamForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Getting values from the form
+    const name = document.getElementById('name').value;
+    const userColor = document.getElementById('color').value;
+
+    // Show the success message
+    const msgDiv = document.getElementById('message');
+    msgDiv.style.display = 'block';
+    msgDiv.style.backgroundColor = userColor + '22'; // Light tint
+    msgDiv.style.color = userColor;
+    msgDiv.style.border = `1px solid ${userColor}`;
+    msgDiv.innerHTML = `Entry for ${name} has been sealed successfully!`;
+
+    // Alert for extra confirmation
+    alert("Slambook updated!");
+
+    // Optional: Log data to console (F12 to see it)
+    console.log("New Slambook Entry:", {
+        name: name,
+        color: userColor,
+        hobby: document.getElementById('hobbies').value
+    });
+
+    this.reset();
+});

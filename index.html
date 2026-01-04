@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Slambook</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>✨ My Slambook ✨</h2>
+        <form id="slamForm">
+            <div class="form-group">
+                <label for="name">Nickname</label>
+                <input type="text" id="name" required placeholder="What's your name?">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age">
+                </div>
+                <div class="form-group">
+                    <label for="sex">Sex</label>
+                    <select id="sex">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="hobbies">Hobbies</label>
+                <input type="text" id="hobbies" placeholder="Coding, Music, etc.">
+            </div>
+
+            <div class="form-group">
+                <label for="song">Favorite Song</label>
+                <input type="text" id="song">
+            </div>
+
+            <div class="form-group">
+                <label for="food">Favorite Food</label>
+                <input type="text" id="food">
+            </div>
+
+            <div class="form-group">
+                <label for="movie">Favorite Movie</label>
+                <input type="text" id="movie">
+            </div>
+
+            <div class="form-group">
+                <label for="memory">Best Memory with Me</label>
+                <textarea id="memory" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="color">Pick a Theme Color</label>
+                <input type="color" id="color" value="#6c5ce7">
+            </div>
+
+            <button type="submit">Seal My Entry! ✍️</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
