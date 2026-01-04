@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration & Inline Subscription</title>
+    <title>MyBrand | Digital Slambook</title>
     <style>
+        /* --- Base & Layout --- */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
@@ -15,34 +16,95 @@
             min-height: 100vh;
         }
 
-        /* --- Navbar & Main (Simplified for focus) --- */
-        header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 50px; }
-        main { flex: 1; display: flex; justify-content: center; padding: 50px 20px; }
-        .form-container { background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        /* --- Sticky Navbar --- */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
-        /* --- Footer Styles --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* --- Hero Section (Image Left, Text Right) --- */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px 60px; /* Top padding accounts for fixed header */
+            background-color: white;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image { flex: 1; max-width: 500px; }
+        .hero-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero-text { flex: 1; max-width: 500px; }
+        .hero-text h1 { font-size: 38px; color: #2d3436; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: #636e72; line-height: 1.6; }
+
+        /* --- Registration Section --- */
+        main {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #28a745;
+        }
+
+        /* --- The Full 4-Column Footer --- */
         footer {
             background-color: #2d3436;
             color: white;
-            padding: 40px 50px;
+            padding: 50px 20px 20px;
             margin-top: auto;
         }
 
         .footer-container {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
             flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
-            gap: 30px;
+            gap: 40px;
         }
 
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-
+        .footer-section { flex: 1; min-width: 200px; }
         .footer-section h4 {
             border-bottom: 2px solid #28a745;
             padding-bottom: 10px;
@@ -52,61 +114,77 @@
 
         .footer-links { list-style: none; padding: 0; margin: 0; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #bdc3c7; text-decoration: none; transition: 0.3s; }
+        .footer-links a { color: #bdc3c7; text-decoration: none; }
         .footer-links a:hover { color: #28a745; }
 
-        /* --- INLINE SUBSCRIBE FORM --- */
+        /* Inline Subscribe form */
         .subscribe-group {
-            display: flex; /* This puts items side-by-side */
-            align-items: stretch;
-            margin-top: 10px;
+            display: flex;
+            margin-top: 15px;
         }
 
-        .subscribe-group input[type="email"] {
-            padding: 12px 15px;
+        .subscribe-group input {
+            padding: 12px;
             border: none;
-            border-radius: 5px 0 0 5px; /* Rounds only the left corners */
+            border-radius: 5px 0 0 5px;
+            flex: 1;
             outline: none;
-            flex: 1; /* Makes the input take up available space */
-            font-size: 14px;
         }
 
         .subscribe-btn {
             background-color: #28a745;
             color: white;
             border: none;
-            padding: 0 20px;
-            border-radius: 0 5px 5px 0; /* Rounds only the right corners */
+            padding: 12px 20px;
+            border-radius: 0 5px 5px 0;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.3s;
-            white-space: nowrap; /* Prevents text from wrapping */
-        }
-
-        .subscribe-btn:hover {
-            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" style="font-size: 24px; font-weight: bold; color: #28a745;">🚀 MyBrand</div>
+        <div class="navbar">
+            <div style="font-size: 24px; font-weight: bold; color: #28a745;">🚀 MyBrand</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" style="background:#28a745; color:white; padding:8px 15px; border-radius:5px;">Login</a></li>
+            </ul>
+        </div>
     </header>
 
+    <section class="hero-section">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&q=80&w=1000" alt="Slambook Illustration">
+        </div>
+        <div class="hero-text">
+            <h1>Building the future of digital slambooks.</h1>
+            <p>Connect with your inner circle, share your favorite secrets, and create a digital time capsule that lasts forever.</p>
+        </div>
+    </section>
+
     <main>
-        <section class="form-container">
-            <h2>Registration</h2>
-            <p>Create your account today.</p>
-        </section>
+        <div class="form-container">
+            <h2 style="text-align: center;">Register</h2>
+            <form action="#">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; font-weight:bold;">Email</label>
+                    <input type="email" placeholder="Enter your email" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <button type="submit" style="width:100%; padding:12px; background:#28a745; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Get Started</button>
+            </form>
+        </div>
     </main>
 
     <footer>
         <div class="footer-container">
             
             <section class="footer-section">
-                <div class="logo" style="color: white; font-size: 28px; font-weight: bold;">🚀 MyBrand</div>
-                <p style="color: #bdc3c7; font-size: 14px; margin-top: 15px;">Building the future of digital slambooks.</p>
+                <div style="font-size: 24px; font-weight: bold; color: white;">MyBrand</div>
+                <p style="color: #bdc3c7; font-size: 14px; margin-top: 10px;">Building the future of digital slambooks.</p>
             </section>
 
             <section class="footer-section">
@@ -130,9 +208,8 @@
             <section class="footer-section">
                 <h4>Newsletter</h4>
                 <p style="font-size: 14px; color: #bdc3c7;">Enter your email to subscribe:</p>
-                
                 <form class="subscribe-group">
-                    <input type="email" id="footer-email" placeholder="Email address" required>
+                    <input type="email" placeholder="Email" required>
                     <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
             </section>
